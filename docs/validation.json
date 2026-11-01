@@ -1,0 +1,8 @@
+{
+  "seed": 42,
+  "total": 100000,
+  "anomalias_sinteticas": 960,
+  "porcentaje": 0.96,
+  "dataset_sha256": "fca80e529a3bc5ac765f5642f10e79c3bfcc169d625705dc7c17257d2c500247",
+  "regla_demo": "dosis_mg > 800; no es un umbral clínico"
+}
