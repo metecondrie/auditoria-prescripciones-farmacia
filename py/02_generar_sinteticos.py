@@ -1,92 +1,78 @@
-import pandas as pd
-from sqlalchemy import create_engine
-from faker import Faker
+"""Deterministic educational fixtures. No real patient identities."""
+import argparse
+from datetime import date, timedelta
+import hashlib
+import json
+from pathlib import Path
 import random
-from datetime import datetime, timedelta
+from sqlalchemy import text
+from common import engine_from_env, insert_rows
 
-# Inicializar Faker con configuración para Argentina
-fake = Faker('es_AR')
 
-# 1. Conexión a Postgres
-# ¡Cambiá la contraseña si hace falta!
-motor_sql = create_engine('postgresql://postgres:alejo265@localhost:5432/auditoria_farmaco')
+def generate(medication_ids, n=100000, seed=42):
+    ids = sorted(set(medication_ids))
+    if not ids or n < 1:
+        raise ValueError("Se requieren medicamentos y n positivo")
+    rng = random.Random(seed)
+    start = date(2024, 1, 1)
+    dates = [start + timedelta(days=i) for i in range(731)]
+    calendar = [{"fecha": d, "anio": d.year, "mes": d.month,
+                 "dia_semana": d.weekday(), "es_feriado": None} for d in dates]
+    patients = [{"id_paciente": i, "hash_identidad": f"SYN-P-{seed}-{i}",
+                 "fecha_nacimiento": date(1950, 1, 1) + timedelta(days=rng.randrange(20000)),
+                 "genero": rng.choice(["M", "F", "X", None])} for i in range(1, 5001)]
+    specialties = ["Psiquiatría", "Traumatología", "Clínica Médica", "Neurología", "Oncología"]
+    doctors = [{"id_medico": i, "matricula_hash": f"SYN-M-{seed}-{i}",
+                "especialidad": rng.choice(specialties), "valido_desde": start,
+                "valido_hasta": None, "es_actual": True} for i in range(1, 101)]
+    facts = []
+    for _ in range(n):
+        dose = rng.choice([50, 100, 200, 400, 500, 800])
+        if rng.random() < 0.01:
+            dose *= 100
+        facts.append({"id_paciente": rng.randrange(1, 5001), "id_medico": rng.randrange(1, 101),
+                      "id_medicamento": rng.choice(ids), "fecha_prescripcion": rng.choice(dates),
+                      "dosis_mg": dose, "cantidad_cajas": rng.randrange(1, 6)})
+    return {"dim_calendario": calendar, "dim_pacientes": patients,
+            "dim_medicos": doctors, "fact_prescripciones": facts}
 
-def generar_datos():
-    print("1. Extrayendo IDs de medicamentos reales de la base...")
-    df_med = pd.read_sql("SELECT id_medicamento FROM dim_medicamentos", motor_sql)
-    lista_medicamentos = df_med['id_medicamento'].tolist()
-    
-    if not lista_medicamentos:
-        print("Error: No hay medicamentos en la base. Ejecutá el script 1 primero.")
-        return
 
-    print("2. Generando dim_calendario (2024-2025)...")
-    fechas = pd.date_range(start="2024-01-01", end="2025-12-31")
-    df_calendario = pd.DataFrame({
-        'fecha': fechas.date,
-        'anio': fechas.year,
-        'mes': fechas.month,
-        'dia_semana': fechas.weekday,
-        'es_feriado': [random.choice([True, False, False, False]) for _ in fechas]
-    })
-    df_calendario.to_sql('dim_calendario', motor_sql, if_exists='append', index=False)
+def summary(tables, seed):
+    facts = tables["fact_prescripciones"]
+    anomalies = sum(r["dosis_mg"] > 800 for r in facts)
+    digest = hashlib.sha256(json.dumps(tables, default=str, sort_keys=True).encode()).hexdigest()
+    return {"seed": seed, "total": len(facts), "anomalias_sinteticas": anomalies,
+            "porcentaje": 100 * anomalies / len(facts), "dataset_sha256": digest,
+            "regla_demo": "dosis_mg > 800; no es un umbral clínico"}
 
-    print("3. Generando 5,000 Pacientes...")
-    pacientes = []
-    for _ in range(5000):
-        # Inyectamos 5% de ruido: algunos pacientes no tienen género registrado (None)
-        genero = random.choice(['M', 'F', 'X']) if random.random() > 0.05 else None
-        pacientes.append({
-            'hash_identidad': fake.sha256()[:16], # Simulamos datos enmascarados (Compliance)
-            'fecha_nacimiento': fake.date_of_birth(minimum_age=18, maximum_age=90),
-            'genero': genero
-        })
-    df_pacientes = pd.DataFrame(pacientes)
-    df_pacientes.to_sql('dim_pacientes', motor_sql, if_exists='append', index=False)
 
-    print("4. Generando 100 Médicos (con historial SCD Tipo 2)...")
-    medicos = []
-    especialidades = ['Psiquiatría', 'Traumatología', 'Clínica Médica', 'Neurología', 'Oncología']
-    for _ in range(100):
-        medicos.append({
-            'matricula_hash': fake.sha256()[:10],
-            'especialidad': random.choice(especialidades),
-            'valido_desde': fake.date_between(start_date='-5y', end_date='-1y'),
-            'valido_hasta': None, # Si es None, significa que sigue trabajando ahí
-            'es_actual': True
-        })
-    df_medicos = pd.DataFrame(medicos)
-    df_medicos.to_sql('dim_medicos', motor_sql, if_exists='append', index=False)
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--rows", type=int, default=100000)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--offline", action="store_true", help="Validación sin base ni red")
+    parser.add_argument("--report", type=Path)
+    args = parser.parse_args()
+    if args.offline:
+        tables = generate(range(1, 101), args.rows, args.seed)
+    else:
+        engine = engine_from_env()
+        with engine.begin() as conn:
+            # Serialize generation and reject populated targets; no partial append.
+            conn.execute(text("LOCK TABLE dim_medicamentos, dim_calendario, dim_pacientes, dim_medicos, fact_prescripciones IN EXCLUSIVE MODE"))
+            for table in ["dim_calendario", "dim_pacientes", "dim_medicos", "fact_prescripciones"]:
+                if conn.execute(text(f"SELECT EXISTS (SELECT 1 FROM {table})")).scalar():
+                    raise ValueError("Destino no vacío: usá una base de demostración nueva")
+            ids = list(conn.execute(text("SELECT id_medicamento FROM dim_medicamentos ORDER BY id_medicamento")).scalars())
+            tables = generate(ids, args.rows, args.seed)
+            for table, rows in tables.items():
+                insert_rows(conn, table, rows)
+    report = json.dumps(summary(tables, args.seed), indent=2, ensure_ascii=False)
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(report + "\n", encoding="utf-8")
+    print(report)
 
-    print("5. Generando 100,000 Prescripciones (La tabla de hechos)...")
-    # Para no asfixiar tu i5 y tus 14GB de RAM de golpe, empezamos con 100k filas.
-    # Recuperamos los IDs generados por Postgres para mantener la integridad referencial
-    df_pac_ids = pd.read_sql("SELECT id_paciente FROM dim_pacientes", motor_sql)['id_paciente'].tolist()
-    df_med_ids = pd.read_sql("SELECT id_medico FROM dim_medicos", motor_sql)['id_medico'].tolist()
-    lista_fechas = df_calendario['fecha'].tolist()
 
-    prescripciones = []
-    for _ in range(100000):
-        dosis = random.choice([50, 100, 200, 400, 500, 800])
-        
-        # INYECCIÓN DE CAOS (Anomalías para detectar en el análisis)
-        probabilidad_error = random.random()
-        if probabilidad_error < 0.01: 
-            dosis = dosis * 100 # Error de tipeo: dosis mortal (ej. 40.000 mg)
-            
-        prescripciones.append({
-            'id_paciente': random.choice(df_pac_ids),
-            'id_medico': random.choice(df_med_ids),
-            'id_medicamento': random.choice(lista_medicamentos),
-            'fecha_prescripcion': random.choice(lista_fechas),
-            'dosis_mg': dosis,
-            'cantidad_cajas': random.randint(1, 5)
-        })
-        
-    df_presc = pd.DataFrame(prescripciones)
-    df_presc.to_sql('fact_prescripciones', motor_sql, if_exists='append', index=False)
-    
-    print("¡Finalizado! La base de datos ya tiene volumen para analizar.")
-
-if __name__ == '__main__':
-    generar_datos()
+if __name__ == "__main__":
+    main()

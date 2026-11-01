@@ -1,0 +1,5 @@
+// Crear sobre vw_auditoria_prescripciones (todas las filas, sin filtrar anomalías).
+Total Prescripciones = COUNTROWS(vw_auditoria_prescripciones)
+Anomalias Demo = CALCULATE([Total Prescripciones], vw_auditoria_prescripciones[es_anomalia_demo] = TRUE())
+Porcentaje Anomalias Demo = DIVIDE([Anomalias Demo], [Total Prescripciones], 0)
+// Formatear como porcentaje. El umbral 1% es ilustrativo, no clínico.
