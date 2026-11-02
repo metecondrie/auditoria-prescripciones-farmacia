@@ -87,6 +87,21 @@ SELECT * FROM vw_resumen_por_especialidad;
 
 Las tasas segmentadas incluyen las líneas normales y marcadas de cada medicamento/especialidad. Los conteos de cada grupo deben sumar el total global.
 
+## Propuesta visual para Power BI
+
+![Maqueta de dashboard con métricas verificadas de datos sintéticos](../assets/dashboard-preview.svg)
+
+Esta **maqueta no es una captura del archivo PBIX histórico**. Los indicadores y gráficos se calcularon a partir del mismo generador reproducible. [Datos de referencia](bi_reference.json) · [Guía para reconstruirlo](../powerBI/BUILD_GUIDE.md) · [Tema de Power BI](../powerBI/pharmacy-audit-theme.json).
+
+Podés recalcular los agregados por especialidad y mes sin base de datos:
+
+```powershell
+python py/03_export_bi_reference.py --output artifacts/bi_reference.json
+```
+
+La variación temporal y las diferencias entre especialidades son **aleatorias por diseño**; no son indicadores clínicos reales.
+
+
 ## Power BI y verificación
 
 El archivo [`Auditoria.pbix`](../powerBI/Auditoria.pbix) es **histórico**. No se verificaron por completo sus relaciones internas, medidas y datos cacheados. No debe tomarse como evidencia visual de la nueva simulación. Las [medidas DAX](../powerBI/medidas.dax) son una especificación para reconstruir el informe sobre la vista completa, no una exportación certificada del PBIX.

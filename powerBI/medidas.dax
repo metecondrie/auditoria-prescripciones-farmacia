@@ -1,18 +1,26 @@
-// Recreate these measures on the FULL, unfiltered vw_auditoria_prescripciones.
-// Do not define rates against vw_auditoria_anomalias (selection bias).
+// Power BI reconstruction measures (NOT extracted/validated from the legacy PBIX).
+// Model name: vw_auditoria_prescripciones (one row = one synthetic prescription line).
+// Removing only the demo flag filter retains date, medication and specialty filters.
+
 Total Prescripciones =
-    COUNTROWS(vw_auditoria_prescripciones)
+    CALCULATE(
+        COUNTROWS(vw_auditoria_prescripciones),
+        REMOVEFILTERS(vw_auditoria_prescripciones[es_anomalia_demo])
+    )
 
 Anomalias Demo =
     CALCULATE(
-        [Total Prescripciones],
+        COUNTROWS(vw_auditoria_prescripciones),
+        REMOVEFILTERS(vw_auditoria_prescripciones[es_anomalia_demo]),
         vw_auditoria_prescripciones[es_anomalia_demo] = TRUE()
     )
 
 Porcentaje Anomalias Demo =
     DIVIDE([Anomalias Demo], [Total Prescripciones])
 
-// Display "Porcentaje Anomalias Demo" as Percentage (e.g. 0.96%).
-// Empty populations display BLANK(), not a misleading 0%.
-// 800 mg / 1% are demonstration-specific boundaries, NOT clinical thresholds.
-// This file specifies proposed measures; legacy PBIX formulas remain unverified.
+// Format as a percentage (two decimals). Empty denominator -> BLANK.
+// Never interpret "dosis_mg > 800" as a clinical dose threshold.
+// Do not sum segment percentages; calculate rates from each group's counts.
+// For a chronological monthly axis, create a CALCULATED COLUMN:
+// Mes = DATE(YEAR(vw_auditoria_prescripciones[fecha_prescripcion]),
+//            MONTH(vw_auditoria_prescripciones[fecha_prescripcion]), 1)

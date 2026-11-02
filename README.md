@@ -133,6 +133,23 @@ Use a **fresh, dedicated demo database**. The schema file is not a migration and
 
 To reuse the **same** NDC input, omit `--download` and retain the saved snapshot and reported SHA-256. Data generation intentionally refuses populated fact/dimension destinations, preventing accidental duplicate appends. Since the online NDC catalogue differs from the 100-product offline fixture, its resulting dataset hash need not match the offline reference.
 
+## Power BI dashboard blueprint
+
+![Verified simulated dashboard design preview](assets/dashboard-preview.svg)
+
+This is a **source-backed design preview**, not a screenshot or exported report from the historical `Auditoria.pbix`. The KPI, specialty and monthly values come from [the fixed-seed 100,000-line BI reference](docs/bi_reference.json) and are checked against a fresh generator run in CI.
+
+[Power BI reconstruction guide](powerBI/BUILD_GUIDE.md) · [Importable color theme](powerBI/pharmacy-audit-theme.json) · [DAX measures](powerBI/medidas.dax)
+
+To regenerate the reference without PostgreSQL or Power BI:
+
+```bash
+python py/03_export_bi_reference.py --output artifacts/bi_reference.json
+```
+
+**Interpretation:** the 24-month variation and specialty differences are random properties of the synthetic generator, not evidence of healthcare trends or differing clinical safety.
+
+
 ## BI: inspectable definitions vs. historical dashboard
 
 The tracked [`powerBI/Auditoria.pbix`](powerBI/Auditoria.pbix) is a **historical artifact**. Its internal model, cached values, visuals and refresh state have **not** been fully verified against the improved SQL schema; do not mistake it for a validated screenshot of the reference run.
