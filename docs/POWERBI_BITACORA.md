@@ -77,9 +77,23 @@ DIVIDE(
 - [ ] Revisar el histórico `powerBI/Auditoria.pbix` y credenciales antiguas antes de considerar distribución pública segura.
 - [ ] No fusionar PR #2 ni reemplazar el PBIX histórico sin comprobaciones y autorización del usuario.
 
+## 2026-11-02 — Nueva captura: medidas DAX recuperadas (02:41, hora local)
+
+**Comprobado visualmente:**
+
+- La página seleccionada sigue siendo `Dashboard Ejecutivo` del archivo local `Auditoria2`.
+- La tabla `FactPrescripcionesDemo` muestra las medidas `Anomalias Demo`, `Tasa Demo` y `Total Prescripciones Demo`, todas con ícono de calculadora y **sin triángulo rojo visible**.
+- Hay un gráfico de una barra con el campo `Tasa Demo`. El eje llega a 0,010 y la altura es aproximadamente 0,0096 (equivalente a 0,96 %); **no** hay un rótulo legible del valor exacto en la captura.
+- En el panel todavía aparecen `Medida` y `Medida 2`. Su contenido es desconocido, por lo que no corresponde borrarlas sin inspección.
+- Persiste un objeto visual vacío arriba a la izquierda y el gráfico de barras aún no está convertido en tarjeta KPI.
+
+**Conclusión:** el error anterior de nombre duplicado ya no aparece y la tasa es plausible. Falta validar valores exactos dentro de tarjetas y aplicar el formato de porcentaje. No debe interpretarse la ausencia del triángulo rojo como prueba completa del cálculo.
+
+**Próximos pasos:** seleccionar `Tasa Demo` y configurarla como **Porcentaje (2 decimales)** en Herramientas de medición; cambiar el gráfico de barra a **Tarjeta** desde el panel de Visualizaciones; verificar 0,96 %. Agregar tarjetas para `Total Prescripciones Demo` (100.000) y `Anomalias Demo` (960). Conservar las otras dos medidas hasta revisar su fórmula.
+
 ## Principio de interpretación
 
 Todas las marcas del proyecto nuevo proceden de una **simulación reproducible**. La regla `dosis_mg > 800` **no** es un umbral farmacológico ni define seguridad clínica. El objetivo es demostrar ingeniería de datos, modelado, trazabilidad y visualización auditable, no diagnosticar pacientes ni estimar ahorros reales.
 
 ---
-**Próxima actualización:** después de recibir una captura con la medida `Tasa Demo` corregida; agregar una nueva entrada con fecha, observación verificable y paso siguiente.
+**Próxima actualización:** cuando estén visibles las tres tarjetas KPI y sus valores exactos; registrar el resultado con captura.
