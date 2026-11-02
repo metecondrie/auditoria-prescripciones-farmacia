@@ -20,7 +20,7 @@ SELECT *
 FROM vw_auditoria_prescripciones
 WHERE es_anomalia_demo;
 
--- Empty inputs: percentage is NULL (not a fabricated 0%).
+-- Empty inputs: percentage is NULL (not a fabricated zero percent).
 CREATE OR REPLACE VIEW vw_resumen_auditoria AS
 SELECT
     COUNT(*) AS total_prescripciones,
