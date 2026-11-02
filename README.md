@@ -5,7 +5,7 @@
 ![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
 ![Data](https://img.shields.io/badge/Data-100%25%20synthetic-007f79)
 
-[**Versión en español**](docs/README.es.md) · [Metrics & data contract](docs/METRICS.md) · [Quality & security](docs/QUALITY.md)
+[**Versión en español**](docs/README.es.md) · [Case study](docs/CASE_STUDY.md) · [Metrics & data contract](docs/METRICS.md) · [Quality & security](docs/QUALITY.md)
 
 ![Pharmacy prescription audit — a synthetic data engineering and BI case study](assets/portfolio-cover.svg)
 

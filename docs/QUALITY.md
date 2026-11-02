@@ -15,6 +15,12 @@
 
 Without `TEST_DATABASE_URL`, integration tests are intentionally **skipped**; a successful offline-only run does not certify PostgreSQL behavior. Verify the status of the actual proposed branch on the GitHub Actions page.
 
+## Dependency maintenance (November 2026)
+
+The original requirements pinned `requests==2.32.3`. This version predates security fixes for [CVE-2024-47081](https://docs.python-requests.org/en/latest/community/updates/) (and later fixes). This portfolio branch updates it to `requests==2.34.2`. The original vulnerability requires particular environmental and URL conditions; pinning an affected version does **not** by itself prove exploitation in this project.
+
+`SQLAlchemy==2.0.36` and `psycopg[binary]==3.2.3` remain pinned until their compatibility and dependency chains are reviewed independently. A passing Python/PostgreSQL CI run is not a full dependency security audit.
+
 ## Known security risks
 
 1. **Git history:** a prior commit contained a credential literal. HEAD was cleaned, but history is not rewritten. Revoke or rotate it if it was real and active.

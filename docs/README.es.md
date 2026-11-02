@@ -1,6 +1,6 @@
 # Auditoría de prescripciones farmacéuticas
 
-[**English README**](../README.md) · [Definiciones de métricas](METRICS.md) · [Controles y seguridad](QUALITY.md)
+[**English README**](../README.md) · [Caso de estudio](CASE_STUDY.md) · [Definiciones de métricas](METRICS.md) · [Controles y seguridad](QUALITY.md)
 
 ![Portada del proyecto: ETL, PostgreSQL y BI sobre datos simulados](../assets/portfolio-cover.svg)
 
