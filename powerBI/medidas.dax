@@ -1,5 +1,18 @@
-// Crear sobre vw_auditoria_prescripciones (todas las filas, sin filtrar anomalías).
-Total Prescripciones = COUNTROWS(vw_auditoria_prescripciones)
-Anomalias Demo = CALCULATE([Total Prescripciones], vw_auditoria_prescripciones[es_anomalia_demo] = TRUE())
-Porcentaje Anomalias Demo = DIVIDE([Anomalias Demo], [Total Prescripciones], 0)
-// Formatear como porcentaje. El umbral 1% es ilustrativo, no clínico.
+// Recreate these measures on the FULL, unfiltered vw_auditoria_prescripciones.
+// Do not define rates against vw_auditoria_anomalias (selection bias).
+Total Prescripciones =
+    COUNTROWS(vw_auditoria_prescripciones)
+
+Anomalias Demo =
+    CALCULATE(
+        [Total Prescripciones],
+        vw_auditoria_prescripciones[es_anomalia_demo] = TRUE()
+    )
+
+Porcentaje Anomalias Demo =
+    DIVIDE([Anomalias Demo], [Total Prescripciones])
+
+// Display "Porcentaje Anomalias Demo" as Percentage (e.g. 0.96%).
+// Empty populations display BLANK(), not a misleading 0%.
+// 800 mg / 1% are demonstration-specific boundaries, NOT clinical thresholds.
+// This file specifies proposed measures; legacy PBIX formulas remain unverified.
