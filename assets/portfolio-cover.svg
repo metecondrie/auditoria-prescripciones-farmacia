@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410" role="img" aria-labelledby="title desc">
+<title id="title">Pharmacy Prescription Audit — reproducible synthetic data case study</title>
+<desc id="desc">Data pipeline from Python through PostgreSQL to Power BI, showing 100,000 synthetic records, 960 demo outliers, and a 0.96 percent demo rate.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1222"/><stop offset="1" stop-color="#162a42"/></linearGradient>
+  <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#48c7c1"/><stop offset="1" stop-color="#79a9f4"/></linearGradient>
+</defs>
+<rect width="1200" height="410" rx="24" fill="url(#bg)"/>
+<path d="M0 310 C210 225 340 430 590 320 S1020 265 1200 320 L1200 410 L0 410Z" fill="#183952" opacity=".46"/>
+<circle cx="1130" cy="44" r="165" fill="#3f8faa" opacity=".08"/>
+<rect x="53" y="45" width="205" height="30" rx="15" fill="#19374a" stroke="#377f87"/>
+<text x="155" y="65" text-anchor="middle" font-size="13" fill="#9be6e1" font-family="Arial,sans-serif" font-weight="700" letter-spacing="1.3">DATA ENGINEERING · BI</text>
+<text x="53" y="131" font-family="Arial,sans-serif" font-size="46" font-weight="700" fill="#fff">Pharmacy Prescription</text>
+<text x="53" y="183" font-family="Arial,sans-serif" font-size="46" font-weight="700" fill="url(#accent)">Audit</text>
+<text x="54" y="222" font-family="Arial,sans-serif" font-size="17" fill="#b3c7db">Reproducible pipeline · transparent metrics · synthetic data only</text>
+<g transform="translate(54 264)" font-family="Arial,sans-serif">
+  <rect width="246" height="103" rx="15" fill="#1a3149" stroke="#38526a"/>
+  <text x="18" y="34" font-size="14" fill="#bfd1e2">Simulated prescription lines</text>
+  <text x="18" y="79" font-size="38" font-weight="700" fill="#f5fbff">100,000</text>
+  <g transform="translate(268 0)"><rect width="205" height="103" rx="15" fill="#1a3149" stroke="#38526a"/>
+  <text x="18" y="34" font-size="14" fill="#bfd1e2">Rule-based flags</text>
+  <text x="18" y="79" font-size="38" font-weight="700" fill="#f5fbff">960</text></g>
+  <g transform="translate(495 0)"><rect width="176" height="103" rx="15" fill="#1a3149" stroke="#38526a"/>
+  <text x="18" y="34" font-size="14" fill="#bfd1e2">Demo flag rate</text>
+  <text x="18" y="79" font-size="38" font-weight="700" fill="#f5fbff">0.96%</text></g>
+</g>
+<g transform="translate(837 81)" font-family="Arial,sans-serif">
+  <rect x="0" y="0" width="305" height="227" rx="18" fill="#12263a" stroke="#355168"/>
+  <text x="25" y="35" font-size="14" letter-spacing="1.3" font-weight="700" fill="#8cbbca">DATA FLOW</text>
+  <rect x="23" y="52" width="259" height="36" rx="8" fill="#235069"/>
+  <text x="152" y="76" text-anchor="middle" font-size="16" fill="#e9fcff">Python · source + simulation</text>
+  <path d="M152 88 V108" stroke="#65d3ce" stroke-width="2"/><path d="M146 101 L152 110 L158 101" fill="none" stroke="#65d3ce" stroke-width="2"/>
+  <rect x="23" y="112" width="259" height="36" rx="8" fill="#235069"/>
+  <text x="152" y="136" text-anchor="middle" font-size="16" fill="#e9fcff">PostgreSQL · SQL views</text>
+  <path d="M152 148 V168" stroke="#65d3ce" stroke-width="2"/><path d="M146 161 L152 170 L158 161" fill="none" stroke="#65d3ce" stroke-width="2"/>
+  <rect x="23" y="172" width="259" height="36" rx="8" fill="#235069"/>
+  <text x="152" y="196" text-anchor="middle" font-size="16" fill="#e9fcff">Power BI · presentation</text>
+</g>
+<text x="1143" y="386" text-anchor="end" font-size="13" font-family="Arial,sans-serif" fill="#99afc3">DEMO DATA · NOT CLINICAL VALIDATION</text>
+</svg>

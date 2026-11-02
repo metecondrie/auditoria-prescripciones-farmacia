@@ -1,0 +1,17 @@
+{
+  "name": "Pharmacy Audit | Dark Demo",
+  "dataColors": [
+    "#37B6B3",
+    "#5C93C7",
+    "#D9A96D",
+    "#A99DD8",
+    "#68A88E",
+    "#8FA9BE"
+  ],
+  "background": "#0B1725",
+  "foreground": "#F4F9FE",
+  "tableAccent": "#37B6B3",
+  "good": "#37B6B3",
+  "neutral": "#90A7BB",
+  "bad": "#E2A16C"
+}

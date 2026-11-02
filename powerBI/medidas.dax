@@ -1,5 +1,26 @@
-// Crear sobre vw_auditoria_prescripciones (todas las filas, sin filtrar anomalías).
-Total Prescripciones = COUNTROWS(vw_auditoria_prescripciones)
-Anomalias Demo = CALCULATE([Total Prescripciones], vw_auditoria_prescripciones[es_anomalia_demo] = TRUE())
-Porcentaje Anomalias Demo = DIVIDE([Anomalias Demo], [Total Prescripciones], 0)
-// Formatear como porcentaje. El umbral 1% es ilustrativo, no clínico.
+// Power BI reconstruction measures (NOT extracted/validated from the legacy PBIX).
+// Model name: vw_auditoria_prescripciones (one row = one synthetic prescription line).
+// Removing only the demo flag filter retains date, medication and specialty filters.
+
+Total Prescripciones =
+    CALCULATE(
+        COUNTROWS(vw_auditoria_prescripciones),
+        REMOVEFILTERS(vw_auditoria_prescripciones[es_anomalia_demo])
+    )
+
+Anomalias Demo =
+    CALCULATE(
+        COUNTROWS(vw_auditoria_prescripciones),
+        REMOVEFILTERS(vw_auditoria_prescripciones[es_anomalia_demo]),
+        vw_auditoria_prescripciones[es_anomalia_demo] = TRUE()
+    )
+
+Porcentaje Anomalias Demo =
+    DIVIDE([Anomalias Demo], [Total Prescripciones])
+
+// Format as a percentage (two decimals). Empty denominator -> BLANK.
+// Never interpret "dosis_mg > 800" as a clinical dose threshold.
+// Do not sum segment percentages; calculate rates from each group's counts.
+// For a chronological monthly axis, create a CALCULATED COLUMN:
+// Mes = DATE(YEAR(vw_auditoria_prescripciones[fecha_prescripcion]),
+//            MONTH(vw_auditoria_prescripciones[fecha_prescripcion]), 1)
