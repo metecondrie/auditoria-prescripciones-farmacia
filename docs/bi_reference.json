@@ -1,0 +1,185 @@
+{
+  "dataset_sha256": "fca80e529a3bc5ac765f5642f10e79c3bfcc169d625705dc7c17257d2c500247",
+  "seed": 42,
+  "total_lines": 100000,
+  "flagged_lines": 960,
+  "flagged_rate_pct": 0.96,
+  "by_specialty": [
+    {
+      "specialty": "Clínica Médica",
+      "total_lines": 20038,
+      "flagged_lines": 210,
+      "flagged_rate_pct": 1.048
+    },
+    {
+      "specialty": "Neurología",
+      "total_lines": 23928,
+      "flagged_lines": 208,
+      "flagged_rate_pct": 0.8693
+    },
+    {
+      "specialty": "Oncología",
+      "total_lines": 19049,
+      "flagged_lines": 196,
+      "flagged_rate_pct": 1.0289
+    },
+    {
+      "specialty": "Psiquiatría",
+      "total_lines": 19017,
+      "flagged_lines": 178,
+      "flagged_rate_pct": 0.936
+    },
+    {
+      "specialty": "Traumatología",
+      "total_lines": 17968,
+      "flagged_lines": 168,
+      "flagged_rate_pct": 0.935
+    }
+  ],
+  "by_month": [
+    {
+      "month": "2024-01",
+      "total_lines": 4196,
+      "flagged_lines": 33,
+      "flagged_rate_pct": 0.7865
+    },
+    {
+      "month": "2024-02",
+      "total_lines": 3913,
+      "flagged_lines": 33,
+      "flagged_rate_pct": 0.8433
+    },
+    {
+      "month": "2024-03",
+      "total_lines": 4209,
+      "flagged_lines": 33,
+      "flagged_rate_pct": 0.784
+    },
+    {
+      "month": "2024-04",
+      "total_lines": 4119,
+      "flagged_lines": 29,
+      "flagged_rate_pct": 0.7041
+    },
+    {
+      "month": "2024-05",
+      "total_lines": 4219,
+      "flagged_lines": 45,
+      "flagged_rate_pct": 1.0666
+    },
+    {
+      "month": "2024-06",
+      "total_lines": 4213,
+      "flagged_lines": 31,
+      "flagged_rate_pct": 0.7358
+    },
+    {
+      "month": "2024-07",
+      "total_lines": 4213,
+      "flagged_lines": 49,
+      "flagged_rate_pct": 1.1631
+    },
+    {
+      "month": "2024-08",
+      "total_lines": 4180,
+      "flagged_lines": 43,
+      "flagged_rate_pct": 1.0287
+    },
+    {
+      "month": "2024-09",
+      "total_lines": 4077,
+      "flagged_lines": 36,
+      "flagged_rate_pct": 0.883
+    },
+    {
+      "month": "2024-10",
+      "total_lines": 4246,
+      "flagged_lines": 40,
+      "flagged_rate_pct": 0.9421
+    },
+    {
+      "month": "2024-11",
+      "total_lines": 4073,
+      "flagged_lines": 37,
+      "flagged_rate_pct": 0.9084
+    },
+    {
+      "month": "2024-12",
+      "total_lines": 4310,
+      "flagged_lines": 42,
+      "flagged_rate_pct": 0.9745
+    },
+    {
+      "month": "2025-01",
+      "total_lines": 4249,
+      "flagged_lines": 41,
+      "flagged_rate_pct": 0.9649
+    },
+    {
+      "month": "2025-02",
+      "total_lines": 3800,
+      "flagged_lines": 23,
+      "flagged_rate_pct": 0.6053
+    },
+    {
+      "month": "2025-03",
+      "total_lines": 4299,
+      "flagged_lines": 49,
+      "flagged_rate_pct": 1.1398
+    },
+    {
+      "month": "2025-04",
+      "total_lines": 4140,
+      "flagged_lines": 46,
+      "flagged_rate_pct": 1.1111
+    },
+    {
+      "month": "2025-05",
+      "total_lines": 4152,
+      "flagged_lines": 46,
+      "flagged_rate_pct": 1.1079
+    },
+    {
+      "month": "2025-06",
+      "total_lines": 4100,
+      "flagged_lines": 39,
+      "flagged_rate_pct": 0.9512
+    },
+    {
+      "month": "2025-07",
+      "total_lines": 4204,
+      "flagged_lines": 36,
+      "flagged_rate_pct": 0.8563
+    },
+    {
+      "month": "2025-08",
+      "total_lines": 4220,
+      "flagged_lines": 47,
+      "flagged_rate_pct": 1.1137
+    },
+    {
+      "month": "2025-09",
+      "total_lines": 4205,
+      "flagged_lines": 54,
+      "flagged_rate_pct": 1.2842
+    },
+    {
+      "month": "2025-10",
+      "total_lines": 4208,
+      "flagged_lines": 35,
+      "flagged_rate_pct": 0.8317
+    },
+    {
+      "month": "2025-11",
+      "total_lines": 4180,
+      "flagged_lines": 46,
+      "flagged_rate_pct": 1.1005
+    },
+    {
+      "month": "2025-12",
+      "total_lines": 4275,
+      "flagged_lines": 47,
+      "flagged_rate_pct": 1.0994
+    }
+  ]
+}

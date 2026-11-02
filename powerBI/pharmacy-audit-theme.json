@@ -1,0 +1,17 @@
+{
+  "name": "Pharmacy Audit | Synthetic Demo",
+  "dataColors": [
+    "#1D9EA6",
+    "#4279A8",
+    "#B68C58",
+    "#8C79B7",
+    "#5A9E83",
+    "#8F9FB2"
+  ],
+  "background": "#F6F8FB",
+  "foreground": "#132C45",
+  "tableAccent": "#1D9EA6",
+  "good": "#1D9EA6",
+  "neutral": "#8C9CA9",
+  "bad": "#C17B42"
+}

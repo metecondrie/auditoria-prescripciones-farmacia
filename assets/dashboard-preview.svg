@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">Pharmacy Audit Dashboard — synthetic demonstration data</title>
+<desc id="desc">Preview: 100000 simulated prescription lines, 960 demo rule flags, 0.96 percent rate, a grouped comparison across five fictional specialties and a 24-month line chart using reference data. Not a screenshot from the legacy Power BI file.</desc>
+<rect width="1400" height="900" fill="#0B1725"/>
+<rect width="1400" height="88" fill="#10243A"/>
+<rect x="56" y="24" width="7" height="40" rx="3.5" fill="#39BDB6"/>
+<text x="80" y="45" fill="#F6FAFD" font-family="Arial,sans-serif" font-size="24" font-weight="700">Pharmacy Audit</text>
+<text x="80" y="68" fill="#A6BDD0" font-family="Arial,sans-serif" font-size="13">Data Engineering / BI Portfolio</text>
+<rect x="1076" y="28" width="264" height="35" rx="18" fill="#244653" stroke="#3BA79F"/>
+<text x="1208" y="51" text-anchor="middle" fill="#BDEFE6" font-family="Arial,sans-serif" font-size="13" font-weight="700">SYNTHETIC DATA ONLY</text>
+<text x="60" y="133" fill="#F6FAFD" font-family="Arial,sans-serif" font-size="29" font-weight="700">Prescription quality · demonstration dashboard</text>
+<text x="61" y="159" fill="#A7BED2" font-family="Arial,sans-serif" font-size="15">Fixed seed 42  ·  2024–2025  ·  100 simulated medication IDs  ·  Illustrative rule: dose &gt; 800 mg</text>
+<rect x="60" y="192" width="382" height="130" rx="14" fill="#172D44" stroke="#28435B"/>
+<text x="84" y="226" fill="#A6C0D4" font-family="Arial,sans-serif" font-size="16">Simulated prescription lines</text>
+<text x="83" y="283" fill="#F8FBFD" font-family="Arial,sans-serif" font-size="44" font-weight="700">100,000</text>
+<text x="84" y="308" fill="#8EA9BE" font-family="Arial,sans-serif" font-size="13">One record per synthetic line</text>
+<rect x="509" y="192" width="382" height="130" rx="14" fill="#172D44" stroke="#28435B"/>
+<text x="533" y="226" fill="#A6C0D4" font-family="Arial,sans-serif" font-size="16">Rule-based flags</text>
+<text x="532" y="283" fill="#F8FBFD" font-family="Arial,sans-serif" font-size="44" font-weight="700">960</text>
+<text x="533" y="308" fill="#8EA9BE" font-family="Arial,sans-serif" font-size="13">Artificial generator outliers</text>
+<rect x="958" y="192" width="382" height="130" rx="14" fill="#172D44" stroke="#28435B"/>
+<text x="982" y="226" fill="#A6C0D4" font-family="Arial,sans-serif" font-size="16">Demo flag rate</text>
+<text x="981" y="283" fill="#F8FBFD" font-family="Arial,sans-serif" font-size="44" font-weight="700">0.96%</text>
+<text x="982" y="308" fill="#8EA9BE" font-family="Arial,sans-serif" font-size="13">960 / 100,000 lines</text>
+<rect x="60" y="345" width="622" height="454" rx="15" fill="#172D44" stroke="#28435B"/>
+<text x="83" y="384" fill="#F5FAFE" font-family="Arial,sans-serif" font-size="22" font-weight="700">By fictional physician specialty</text>
+<text x="84" y="409" fill="#A6C0D4" font-family="Arial,sans-serif" font-size="14">Share flagged within each specialty · denominator differs</text>
+<text x="70" y="464" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" font-weight="600">Clínica Médica</text>
+<text x="70" y="488" fill="#91AABF" font-family="Arial,sans-serif" font-size="13">210 / 20,038 lines</text>
+<rect x="312" y="446" width="278" height="18" rx="7" fill="#223B53"/>
+<rect x="312" y="446" width="242.79" height="18" rx="7" fill="#37B6B3"/>
+<text x="623" y="461" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" text-anchor="end" font-weight="700">1.05%</text>
+<text x="70" y="529" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" font-weight="600">Oncología</text>
+<text x="70" y="553" fill="#91AABF" font-family="Arial,sans-serif" font-size="13">196 / 19,049 lines</text>
+<rect x="312" y="511" width="278" height="18" rx="7" fill="#223B53"/>
+<rect x="312" y="511" width="238.36" height="18" rx="7" fill="#37B6B3"/>
+<text x="623" y="526" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" text-anchor="end" font-weight="700">1.03%</text>
+<text x="70" y="594" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" font-weight="600">Psiquiatría</text>
+<text x="70" y="618" fill="#91AABF" font-family="Arial,sans-serif" font-size="13">178 / 19,017 lines</text>
+<rect x="312" y="576" width="278" height="18" rx="7" fill="#223B53"/>
+<rect x="312" y="576" width="216.84" height="18" rx="7" fill="#37B6B3"/>
+<text x="623" y="591" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" text-anchor="end" font-weight="700">0.94%</text>
+<text x="70" y="659" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" font-weight="600">Traumatología</text>
+<text x="70" y="683" fill="#91AABF" font-family="Arial,sans-serif" font-size="13">168 / 17,968 lines</text>
+<rect x="312" y="641" width="278" height="18" rx="7" fill="#223B53"/>
+<rect x="312" y="641" width="216.61" height="18" rx="7" fill="#37B6B3"/>
+<text x="623" y="656" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" text-anchor="end" font-weight="700">0.94%</text>
+<text x="70" y="724" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" font-weight="600">Neurología</text>
+<text x="70" y="748" fill="#91AABF" font-family="Arial,sans-serif" font-size="13">208 / 23,928 lines</text>
+<rect x="312" y="706" width="278" height="18" rx="7" fill="#223B53"/>
+<rect x="312" y="706" width="201.39" height="18" rx="7" fill="#37B6B3"/>
+<text x="623" y="721" fill="#F4F9FE" font-family="Arial,sans-serif" font-size="17" text-anchor="end" font-weight="700">0.87%</text>
+<rect x="712" y="345" width="628" height="454" rx="15" fill="#172D44" stroke="#28435B"/>
+<text x="743" y="384" fill="#F5FAFE" font-family="Arial,sans-serif" font-size="22" font-weight="700">Monthly synthetic flag rate</text>
+<text x="744" y="409" fill="#A6C0D4" font-family="Arial,sans-serif" font-size="14">Share flagged per month · 24 simulated calendar months</text>
+<line x1="743" x2="1280" y1="701" y2="701" stroke="#385269" stroke-width="1" stroke-dasharray="3 7"/><text x="730" y="705" text-anchor="end" fill="#A5B9CB" font-family="Arial,sans-serif" font-size="13">0.0%</text>
+<line x1="743" x2="1280" y1="616" y2="616" stroke="#385269" stroke-width="1" stroke-dasharray="3 7"/><text x="730" y="620" text-anchor="end" fill="#A5B9CB" font-family="Arial,sans-serif" font-size="13">0.5%</text>
+<line x1="743" x2="1280" y1="531" y2="531" stroke="#385269" stroke-width="1" stroke-dasharray="3 7"/><text x="730" y="535" text-anchor="end" fill="#A5B9CB" font-family="Arial,sans-serif" font-size="13">1.0%</text>
+<line x1="743" x2="1280" y1="446" y2="446" stroke="#385269" stroke-width="1" stroke-dasharray="3 7"/><text x="730" y="450" text-anchor="end" fill="#A5B9CB" font-family="Arial,sans-serif" font-size="13">1.5%</text>
+<polyline points="744.0,567.3 767.1,557.6 790.3,567.7 813.4,581.3 836.5,519.7 859.7,575.9 882.8,503.3 905.9,526.1 929.0,550.9 952.2,540.8 975.3,546.6 998.4,535.3 1021.6,537.0 1044.7,598.1 1067.8,507.2 1091.0,512.1 1114.1,512.7 1137.2,539.3 1160.3,555.4 1183.5,511.7 1206.6,482.7 1229.7,559.6 1252.9,513.9 1276.0,514.1" fill="none" stroke="#5CC7C0" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="744.0" cy="567.3" r="3.2" fill="#89D4CF" /><circle cx="767.1" cy="557.6" r="3.2" fill="#89D4CF" /><circle cx="790.3" cy="567.7" r="3.2" fill="#89D4CF" /><circle cx="813.4" cy="581.3" r="3.2" fill="#89D4CF" /><circle cx="836.5" cy="519.7" r="3.2" fill="#89D4CF" /><circle cx="859.7" cy="575.9" r="3.2" fill="#89D4CF" /><circle cx="882.8" cy="503.3" r="3.2" fill="#89D4CF" /><circle cx="905.9" cy="526.1" r="3.2" fill="#89D4CF" /><circle cx="929.0" cy="550.9" r="3.2" fill="#89D4CF" /><circle cx="952.2" cy="540.8" r="3.2" fill="#89D4CF" /><circle cx="975.3" cy="546.6" r="3.2" fill="#89D4CF" /><circle cx="998.4" cy="535.3" r="3.2" fill="#89D4CF" /><circle cx="1021.6" cy="537.0" r="3.2" fill="#89D4CF" /><circle cx="1044.7" cy="598.1" r="3.2" fill="#89D4CF" /><circle cx="1067.8" cy="507.2" r="3.2" fill="#89D4CF" /><circle cx="1091.0" cy="512.1" r="3.2" fill="#89D4CF" /><circle cx="1114.1" cy="512.7" r="3.2" fill="#89D4CF" /><circle cx="1137.2" cy="539.3" r="3.2" fill="#89D4CF" /><circle cx="1160.3" cy="555.4" r="3.2" fill="#89D4CF" /><circle cx="1183.5" cy="511.7" r="3.2" fill="#89D4CF" /><circle cx="1206.6" cy="482.7" r="3.2" fill="#89D4CF" /><circle cx="1229.7" cy="559.6" r="3.2" fill="#89D4CF" /><circle cx="1252.9" cy="513.9" r="3.2" fill="#89D4CF" /><circle cx="1276.0" cy="514.1" r="3.2" fill="#89D4CF" />
+<text x="744" y="727" fill="#A5B9CB" text-anchor="middle" font-family="Arial,sans-serif" font-size="13">24-01</text>
+<text x="859.6521739130435" y="727" fill="#A5B9CB" text-anchor="middle" font-family="Arial,sans-serif" font-size="13">24-06</text>
+<text x="998.4347826086956" y="727" fill="#A5B9CB" text-anchor="middle" font-family="Arial,sans-serif" font-size="13">24-12</text>
+<text x="1137.2173913043478" y="727" fill="#A5B9CB" text-anchor="middle" font-family="Arial,sans-serif" font-size="13">25-06</text>
+<text x="1276" y="727" fill="#A5B9CB" text-anchor="middle" font-family="Arial,sans-serif" font-size="13">25-12</text>
+<text x="744" y="765" fill="#8EA9BE" font-family="Arial,sans-serif" font-size="13">Month-to-month variation is random, not a real-world trend.</text>
+<line x1="60" y1="829" x2="1340" y2="829" stroke="#28445D"/>
+<text x="60" y="853" fill="#AEC2D3" font-family="Arial,sans-serif" font-size="14">SOURCE: deterministic Python fixture · docs/bi_reference.json · SHA-256 verified</text>
+<text x="60" y="875" fill="#D0E5EF" font-family="Arial,sans-serif" font-size="14">DESIGN PREVIEW — not an exported or validated Power BI screenshot; no clinical risk inference.</text>
+</svg>
